@@ -54,7 +54,23 @@ CREATE TABLE public.galaxy (
 ALTER TABLE public.galaxy OWNER TO freecodecamp;
 
 --
+-- Name: star; Type: TABLE; Schema: public; Owner: freecodecamp
+--
+
+CREATE TABLE public.star (
+);
+
+
+ALTER TABLE public.star OWNER TO freecodecamp;
+
+--
 -- Data for Name: galaxy; Type: TABLE DATA; Schema: public; Owner: freecodecamp
+--
+
+
+
+--
+-- Data for Name: star; Type: TABLE DATA; Schema: public; Owner: freecodecamp
 --
 
 
