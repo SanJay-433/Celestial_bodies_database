@@ -54,6 +54,26 @@ CREATE TABLE public.galaxy (
 ALTER TABLE public.galaxy OWNER TO freecodecamp;
 
 --
+-- Name: moon; Type: TABLE; Schema: public; Owner: freecodecamp
+--
+
+CREATE TABLE public.moon (
+);
+
+
+ALTER TABLE public.moon OWNER TO freecodecamp;
+
+--
+-- Name: planets; Type: TABLE; Schema: public; Owner: freecodecamp
+--
+
+CREATE TABLE public.planets (
+);
+
+
+ALTER TABLE public.planets OWNER TO freecodecamp;
+
+--
 -- Name: star; Type: TABLE; Schema: public; Owner: freecodecamp
 --
 
@@ -65,6 +85,18 @@ ALTER TABLE public.star OWNER TO freecodecamp;
 
 --
 -- Data for Name: galaxy; Type: TABLE DATA; Schema: public; Owner: freecodecamp
+--
+
+
+
+--
+-- Data for Name: moon; Type: TABLE DATA; Schema: public; Owner: freecodecamp
+--
+
+
+
+--
+-- Data for Name: planets; Type: TABLE DATA; Schema: public; Owner: freecodecamp
 --
 
 
