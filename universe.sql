@@ -143,26 +143,6 @@ ALTER SEQUENCE public.planet_planet_id_seq OWNED BY public.planet.planet_id;
 
 
 --
--- Name: setup; Type: TABLE; Schema: public; Owner: freecodecamp
---
-
-CREATE TABLE public.setup (
-);
-
-
-ALTER TABLE public.setup OWNER TO freecodecamp;
-
---
--- Name: ss; Type: TABLE; Schema: public; Owner: freecodecamp
---
-
-CREATE TABLE public.ss (
-);
-
-
-ALTER TABLE public.ss OWNER TO freecodecamp;
-
---
 -- Name: star; Type: TABLE; Schema: public; Owner: freecodecamp
 --
 
@@ -237,18 +217,6 @@ ALTER TABLE ONLY public.star ALTER COLUMN star_id SET DEFAULT nextval('public.st
 
 --
 -- Data for Name: planet; Type: TABLE DATA; Schema: public; Owner: freecodecamp
---
-
-
-
---
--- Data for Name: setup; Type: TABLE DATA; Schema: public; Owner: freecodecamp
---
-
-
-
---
--- Data for Name: ss; Type: TABLE DATA; Schema: public; Owner: freecodecamp
 --
 
 
