@@ -2,8 +2,8 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 12.17 (Ubuntu 12.17-1.pgdg22.04+1)
--- Dumped by pg_dump version 12.17 (Ubuntu 12.17-1.pgdg22.04+1)
+-- Dumped from database version 12.20 (Ubuntu 12.20-0ubuntu0.20.04.1)
+-- Dumped by pg_dump version 12.20 (Ubuntu 12.20-0ubuntu0.20.04.1)
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -143,6 +143,26 @@ ALTER SEQUENCE public.planet_planet_id_seq OWNED BY public.planet.planet_id;
 
 
 --
+-- Name: setup; Type: TABLE; Schema: public; Owner: freecodecamp
+--
+
+CREATE TABLE public.setup (
+);
+
+
+ALTER TABLE public.setup OWNER TO freecodecamp;
+
+--
+-- Name: ss; Type: TABLE; Schema: public; Owner: freecodecamp
+--
+
+CREATE TABLE public.ss (
+);
+
+
+ALTER TABLE public.ss OWNER TO freecodecamp;
+
+--
 -- Name: star; Type: TABLE; Schema: public; Owner: freecodecamp
 --
 
@@ -217,6 +237,18 @@ ALTER TABLE ONLY public.star ALTER COLUMN star_id SET DEFAULT nextval('public.st
 
 --
 -- Data for Name: planet; Type: TABLE DATA; Schema: public; Owner: freecodecamp
+--
+
+
+
+--
+-- Data for Name: setup; Type: TABLE DATA; Schema: public; Owner: freecodecamp
+--
+
+
+
+--
+-- Data for Name: ss; Type: TABLE DATA; Schema: public; Owner: freecodecamp
 --
 
 
