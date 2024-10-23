@@ -49,7 +49,14 @@ SET default_table_access_method = heap;
 
 CREATE TABLE public.galaxy (
     galaxy_id integer NOT NULL,
-    name character varying(60) NOT NULL
+    name character varying(60) NOT NULL,
+    shape text,
+    size numeric,
+    age integer,
+    no_of_stars integer,
+    is_expanding boolean,
+    has_blackhole boolean,
+    description text
 );
 
 
@@ -82,7 +89,14 @@ ALTER SEQUENCE public.galaxy_galaxy_id_seq OWNED BY public.galaxy.galaxy_id;
 --
 
 CREATE TABLE public.moon (
-    moon_id integer NOT NULL
+    moon_id integer NOT NULL,
+    name character varying(60) NOT NULL,
+    shape text,
+    size numeric,
+    age integer,
+    has_atmosphere boolean,
+    is_habitable boolean,
+    description text
 );
 
 
@@ -115,7 +129,15 @@ ALTER SEQUENCE public.moon_moon_id_seq OWNED BY public.moon.moon_id;
 --
 
 CREATE TABLE public.planet (
-    planet_id integer NOT NULL
+    planet_id integer NOT NULL,
+    name character varying(60) NOT NULL,
+    shape text,
+    size numeric,
+    age integer,
+    no_of_moons integer,
+    is_dwarf boolean,
+    has_rings boolean,
+    description text
 );
 
 
@@ -144,11 +166,54 @@ ALTER SEQUENCE public.planet_planet_id_seq OWNED BY public.planet.planet_id;
 
 
 --
+-- Name: shapes; Type: TABLE; Schema: public; Owner: freecodecamp
+--
+
+CREATE TABLE public.shapes (
+    shapes_id integer NOT NULL,
+    name character varying(60) NOT NULL
+);
+
+
+ALTER TABLE public.shapes OWNER TO freecodecamp;
+
+--
+-- Name: shapes_shape_id_seq; Type: SEQUENCE; Schema: public; Owner: freecodecamp
+--
+
+CREATE SEQUENCE public.shapes_shape_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.shapes_shape_id_seq OWNER TO freecodecamp;
+
+--
+-- Name: shapes_shape_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: freecodecamp
+--
+
+ALTER SEQUENCE public.shapes_shape_id_seq OWNED BY public.shapes.shapes_id;
+
+
+--
 -- Name: star; Type: TABLE; Schema: public; Owner: freecodecamp
 --
 
 CREATE TABLE public.star (
-    star_id integer NOT NULL
+    star_id integer NOT NULL,
+    name character varying(60) NOT NULL,
+    shape text,
+    size numeric,
+    no_of_planets integer,
+    is_variable boolean,
+    is_nueron_star boolean,
+    age integer,
+    description text,
+    galaxy_id integer
 );
 
 
@@ -198,6 +263,13 @@ ALTER TABLE ONLY public.planet ALTER COLUMN planet_id SET DEFAULT nextval('publi
 
 
 --
+-- Name: shapes shapes_id; Type: DEFAULT; Schema: public; Owner: freecodecamp
+--
+
+ALTER TABLE ONLY public.shapes ALTER COLUMN shapes_id SET DEFAULT nextval('public.shapes_shape_id_seq'::regclass);
+
+
+--
 -- Name: star star_id; Type: DEFAULT; Schema: public; Owner: freecodecamp
 --
 
@@ -218,6 +290,12 @@ ALTER TABLE ONLY public.star ALTER COLUMN star_id SET DEFAULT nextval('public.st
 
 --
 -- Data for Name: planet; Type: TABLE DATA; Schema: public; Owner: freecodecamp
+--
+
+
+
+--
+-- Data for Name: shapes; Type: TABLE DATA; Schema: public; Owner: freecodecamp
 --
 
 
@@ -250,6 +328,13 @@ SELECT pg_catalog.setval('public.planet_planet_id_seq', 1, false);
 
 
 --
+-- Name: shapes_shape_id_seq; Type: SEQUENCE SET; Schema: public; Owner: freecodecamp
+--
+
+SELECT pg_catalog.setval('public.shapes_shape_id_seq', 1, false);
+
+
+--
 -- Name: star_star_id_seq; Type: SEQUENCE SET; Schema: public; Owner: freecodecamp
 --
 
@@ -273,11 +358,27 @@ ALTER TABLE ONLY public.galaxy
 
 
 --
+-- Name: moon moon_name_key; Type: CONSTRAINT; Schema: public; Owner: freecodecamp
+--
+
+ALTER TABLE ONLY public.moon
+    ADD CONSTRAINT moon_name_key UNIQUE (name);
+
+
+--
 -- Name: moon moon_pkey; Type: CONSTRAINT; Schema: public; Owner: freecodecamp
 --
 
 ALTER TABLE ONLY public.moon
     ADD CONSTRAINT moon_pkey PRIMARY KEY (moon_id);
+
+
+--
+-- Name: planet planet_name_key; Type: CONSTRAINT; Schema: public; Owner: freecodecamp
+--
+
+ALTER TABLE ONLY public.planet
+    ADD CONSTRAINT planet_name_key UNIQUE (name);
 
 
 --
@@ -289,11 +390,43 @@ ALTER TABLE ONLY public.planet
 
 
 --
+-- Name: shapes shapes_name_key; Type: CONSTRAINT; Schema: public; Owner: freecodecamp
+--
+
+ALTER TABLE ONLY public.shapes
+    ADD CONSTRAINT shapes_name_key UNIQUE (name);
+
+
+--
+-- Name: shapes shapes_pkey; Type: CONSTRAINT; Schema: public; Owner: freecodecamp
+--
+
+ALTER TABLE ONLY public.shapes
+    ADD CONSTRAINT shapes_pkey PRIMARY KEY (shapes_id);
+
+
+--
+-- Name: star star_name_key; Type: CONSTRAINT; Schema: public; Owner: freecodecamp
+--
+
+ALTER TABLE ONLY public.star
+    ADD CONSTRAINT star_name_key UNIQUE (name);
+
+
+--
 -- Name: star star_pkey; Type: CONSTRAINT; Schema: public; Owner: freecodecamp
 --
 
 ALTER TABLE ONLY public.star
     ADD CONSTRAINT star_pkey PRIMARY KEY (star_id);
+
+
+--
+-- Name: star fk_galaxy; Type: FK CONSTRAINT; Schema: public; Owner: freecodecamp
+--
+
+ALTER TABLE ONLY public.star
+    ADD CONSTRAINT fk_galaxy FOREIGN KEY (galaxy_id) REFERENCES public.galaxy(galaxy_id);
 
 
 --
